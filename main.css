@@ -1,3 +1,62 @@
 body {
-    background-color: blue;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
+
+.actual-calculator {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    padding: 30px;
+}
+
+.actual-calculator > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: none;
+    outline: solid;
+    background-color: white;
+}
+
+.actual-calculator > button:hover {
+    background-color: darkred;
+}
+
+/*
+
+Guide til mig:
+/*hoover er farven den viser når musen er over knappen
+
+
+
+
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INSPITRATIONER ONLINE:
+Background colour: gradient
+https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
+GUIDE TIL KODE:
+https://www.section.io/engineering-education/building-a-calculator-a-javascript-project-for-beginners/
+
+ */
