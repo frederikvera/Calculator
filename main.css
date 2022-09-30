@@ -4,29 +4,40 @@ body {
 
 .actual-calculator {
     display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: auto auto auto;
-    padding: 30px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 100px;   /* pt gør denne ikke en skid */
+    box-shadow: 0 0 5px 5px;
+    grid-template-columns: repeat(2, 100px)   /* laver 4 rows af 150px stykket */
 }
 
 .actual-calculator > button {
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 3rem;
     border: none;
     outline: solid;
     background-color: white;
 }
-
 .actual-calculator > button:hover {
     background-color: darkred;
 }
 
-/*
+.container {
+    display: grid;
+    justify-content: left;
+    align-items: flex-start;
+    padding: 100px;   /* pt gør denne ikke en skid */
+    box-shadow: 0 0 5px 5px;
+    grid-template-columns: repeat(2, 100px)   /* laver 4 rows af 150px stykket */
 
+}
+
+
+/*
+Grid: https://www.w3schools.com/css/tryit.asp?filename=trycss_grid
 Guide til mig:
 /*hoover er farven den viser når musen er over knappen
-
+prøv at fordel knapperne på en linje ad gangen. ui - ul
 
 
 
