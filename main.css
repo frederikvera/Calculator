@@ -1,73 +1,33 @@
 body {
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #e66465);
 }
 
-.actual-calculator {
-    display: grid;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 100px;   /* pt gør denne ikke en skid */
+
+.container {
+    font-size: large;
+    display: flow;
+    justify-content: center;
+    align-items: center;
+    max-width: 75vh;
+    min-height: 90vh;
     box-shadow: 0 0 5px 5px;
-    grid-template-columns: repeat(2, 100px)   /* laver 4 rows af 150px stykket */
 }
 
-.actual-calculator > button {
+.container > button {
     cursor: pointer;
-    font-size: 3rem;
+    font-size: 1rem;
     border: none;
     outline: solid;
     background-color: white;
 }
-.actual-calculator > button:hover {
-    background-color: darkred;
+
+.container > button:hover {
+    background-color: darkgray;
 }
 
-.container {
-    display: grid;
-    justify-content: left;
-    align-items: flex-start;
-    padding: 100px;   /* pt gør denne ikke en skid */
-    box-shadow: 0 0 5px 5px;
-    grid-template-columns: repeat(2, 100px)   /* laver 4 rows af 150px stykket */
-
+div#result {
+    font-size: x-large;
 }
 
 
-/*
-Grid: https://www.w3schools.com/css/tryit.asp?filename=trycss_grid
-Guide til mig:
-/*hoover er farven den viser når musen er over knappen
-prøv at fordel knapperne på en linje ad gangen. ui - ul
 
-
-
-
-
-
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* INSPITRATIONER ONLINE:
-Background colour: gradient
-https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient
-GUIDE TIL KODE:
-https://www.section.io/engineering-education/building-a-calculator-a-javascript-project-for-beginners/
-
- */

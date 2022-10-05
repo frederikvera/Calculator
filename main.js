@@ -1,0 +1,95 @@
+//Udregning: BMI er = Vægt / med (Højde * Højde)
+// bmi = weight / (height*height)
+
+
+/* function calculator() {
+    const weight = document.bmiForm.weight.value;
+    const height = document.bmiForm.height.value;
+    if(weight > 0 && height > 0){
+        const finalBmi = weight / (height / 100 * height / 100);
+        document.bmiForm.bmi.value = finalBmi
+        if(finalBmi < 18.5){
+            document.bmiForm.meaning.value = "That you are too thin."
+        }
+        if(finalBmi > 18.5 && finalBmi < 25){
+            document.bmiForm.meaning.value = "That you are healthy."
+        }
+        if(finalBmi > 25){
+            document.bmiForm.meaning.value = "That you have overweight."
+        }
+    }
+    else{
+        alert("Please Fill in everything correctly")
+    }
+} */
+
+
+
+// hvad er window.onload : se i tips 1
+window.onload = () => {
+    let button = document.querySelector("#btn");
+
+    // Her klikkes der for at udregne bmi
+    button.addEventListener("click", calculator);
+};
+
+function calculator() {
+    // Parse int retunere brugerens svar som et rigtig tal i stedet for ens tring
+    //se tips 2 om parse
+    let height = parseInt(document
+        .querySelector("#height").value);
+
+    //Samme ting sker her, så vi skal parse int med vægt også
+    let weight = parseInt(document
+        .querySelector("#weight").value);
+
+    let result = document.querySelector("#result");
+
+
+    //tips 3
+    if (height === null || isNaN(height))
+        result.innerHTML = "Indsæt HØJDE i CM!";
+
+    else if (weight === null || isNaN(weight))
+        result.innerHTML = "Indsæt VÆGT i KG";
+// altså det vi gør ovenover er at tjekke om brugeren rent faktis
+// skirver et tal, og hvis ikke skal programet ikke køre, og skal indtastes igen
+
+    // Hvis brugerens input er int så køre videre. /else
+    else {
+
+        // Vi sætter et max på 3 decimal tal
+        //Vi bruger bmi formlen til at udregne din bmi
+        // Højde skal divideres med 100 for at få et ordenligt tal.
+        let bmi = (weight / ((height/100 * height/100))).toFixed(3);
+
+        // Nu indeler vi i diverse bmi klasser
+        // result.innerhtml retunere svaret til html
+        if (bmi < 18.6) result.innerHTML =
+            `Du er for tynd, din BMI er : <span>${bmi}</span>`; //hvad gør span????
+
+        else if (bmi >= 18.6 && bmi < 24.9)
+            result.innerHTML =
+                `Du er normal, din BMI er : <span>${bmi}</span>`;
+
+        else result.innerHTML =
+                `Du er for tyk, din BMI er : <span>${bmi}</span>`;
+    }
+}
+
+
+
+/* tips :
+1. Onload
+The onload event occurs when an object has been loaded.
+onload is most often used within the <body> element to execute
+a script once a web page has completely
+loaded all content (including images, script files, CSS files, etc.)
+2. Parse int
+https://www.freecodecamp.org/news/parseint-in-javascript-js-string-to-int-example/
+Retunere en tal string til en rigtig Int som kan udregnes med.
+3. isNan
+IsNan er en function som prøver at konvetere den sidste parameter i dette
+tilfælde " " brugerens output, den prøver så at konvetere det til et tal, hvis det er et tal
+så er vores return True, og hvis ikke et tal så er den false.
+ */
