@@ -23,6 +23,57 @@
     }
 } */
 
+let chart = document.getElementById('chart').getContext('2d');
+let bmiChart = new Chart(chart, {
+    type: 'bar', //forskellige former af charts
+    data: {
+        labels:['Your BMI', 'Adjusted BMI', 'Denmark', 'Spain', 'USA', 'Kuwait', 'United Kingdom'],
+        datasets:[{
+            label: 'Your BMI in comparison to other countries',
+            data: [
+                0,
+                23.0,
+                25.3,
+                26.7,
+                28.5,
+                30.0,
+                27.3,
+
+            ],
+            //backgroundColor: 'cyan'
+            backgroundColor:[
+                'rgba(140, 159, 64, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+                'rgba(140, 159, 64, 0.2)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {}
+});
+
+function updateData(barvalues) {
+    document.getElementById("input-value").innerText = barvalues
+    console.log(barvalues)
+    bmiChart.data.datasets[0].data[1] = barvalues;
+    bmiChart.update();
+};
+
+
+
 
 
 // hvad er window.onload : se i tips 1
@@ -63,6 +114,15 @@ function calculator() {
         // Højde skal divideres med 100 for at få et ordenligt tal.
         let bmi = (weight / ((height/100 * height/100))).toFixed(3);
 
+        // Virker ikke PTDADFDSF
+       /* function updateYourBmi(bmi) {
+            console.log(bmi.value)
+            bmiChart.data.datasets[6].data[6] = bmi.value;
+            bmiChart.update();
+        }
+        updateYourBmi(bmi) */
+        //Her til---dfs
+
         // Nu indeler vi i diverse bmi klasser
         // result.innerhtml retunere svaret til html
         if (bmi < 18.6) result.innerHTML =
@@ -74,8 +134,19 @@ function calculator() {
 
         else result.innerHTML =
                 `Du er for tyk, din BMI er : <span>${bmi}</span>`;
+        console.log(bmi)
+
+        //BMI resultat bar
+        bmiChart.data.datasets[0].data[0] = bmi;
+        bmiChart.update();
+
     }
 }
+
+
+
+
+
 
 
 
