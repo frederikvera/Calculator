@@ -1,27 +1,6 @@
 //Udregning: BMI er = Vægt / med (Højde * Højde)
 // bmi = weight / (height*height)
-
-
-/* function calculator() {
-    const weight = document.bmiForm.weight.value;
-    const height = document.bmiForm.height.value;
-    if(weight > 0 && height > 0){
-        const finalBmi = weight / (height / 100 * height / 100);
-        document.bmiForm.bmi.value = finalBmi
-        if(finalBmi < 18.5){
-            document.bmiForm.meaning.value = "That you are too thin."
-        }
-        if(finalBmi > 18.5 && finalBmi < 25){
-            document.bmiForm.meaning.value = "That you are healthy."
-        }
-        if(finalBmi > 25){
-            document.bmiForm.meaning.value = "That you have overweight."
-        }
-    }
-    else{
-        alert("Please Fill in everything correctly")
-    }
-} */
+//- tips ligger i bunden af siden som forklarer nogle ting af koden.
 
 let chart = document.getElementById('chart').getContext('2d');
 let bmiChart = new Chart(chart, {
@@ -40,7 +19,7 @@ let bmiChart = new Chart(chart, {
                 27.3,
 
             ],
-            //backgroundColor: 'cyan'
+
             backgroundColor:[
                 'rgba(140, 159, 64, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -64,7 +43,7 @@ let bmiChart = new Chart(chart, {
     },
     options: {}
 });
-
+// her er vores nr 2 bar som er den vi adjustere selv. Man kan se at det er 2nd bar da den er på index dat[1]
 function updateData(barvalues) {
     document.getElementById("input-value").innerText = barvalues
     console.log(barvalues)
@@ -84,8 +63,16 @@ window.onload = () => {
     button.addEventListener("click", calculator);
 };
 
+//Selve JS programeringen til at udregne bmi har jeg fået inspiration af fra nettet på denne side:
+//https://www.geeksforgeeks.org/design-a-bmi-calculator-using-javascript/
+// Jeg har ikke kunne ændre så meget i selve udregningen da det er den kode der skal til for at få udregningen til at virke.
+//  Jeg har ændret lidt i selve udregningen og de steder jeg kunne. Alle grafer og indsætning af forskellige
+//grafer er min kode, og er ikke blevet inspireret af nogen.
+// feks er variablerne også meget lignende, men da koden skal være på engelsk giver det selvfølelig kun mening at kalde
+//height for heigh og weight for weight.
+
 function calculator() {
-    // Parse int retunere brugerens svar som et rigtig tal i stedet for ens tring
+    // Parse int retunere brugerens svar som et rigtig tal i stedet for en string
     //se tips 2 om parse
     let height = parseInt(document
         .querySelector("#height").value);
@@ -114,14 +101,14 @@ function calculator() {
         // Højde skal divideres med 100 for at få et ordenligt tal.
         let bmi = (weight / ((height/100 * height/100))).toFixed(3);
 
-        // Virker ikke PTDADFDSF
+        // ikke brugt kode nedeunder. -
        /* function updateYourBmi(bmi) {
             console.log(bmi.value)
             bmiChart.data.datasets[6].data[6] = bmi.value;
             bmiChart.update();
         }
         updateYourBmi(bmi) */
-        //Her til---dfs
+        //ikke brugt kode her til----
 
         // Nu indeler vi i diverse bmi klasser
         // result.innerhtml retunere svaret til html
@@ -136,7 +123,8 @@ function calculator() {
                 `Du er for tyk, din BMI er : <span>${bmi}</span>`;
         console.log(bmi)
 
-        //BMI resultat bar
+        //BMI resultat bar, altså det du selv indsætter i værdierne bliver til en bar-
+        //dette er vores førte bar som kan ses på indedx 0
         bmiChart.data.datasets[0].data[0] = bmi;
         bmiChart.update();
 
@@ -152,10 +140,9 @@ function calculator() {
 
 /* tips :
 1. Onload
-The onload event occurs when an object has been loaded.
-onload is most often used within the <body> element to execute
-a script once a web page has completely
-loaded all content (including images, script files, CSS files, etc.)
+Onload eventet sker når et objekt er blevet loaded, onload er best practice til at køre et element i bodyen til at køre et
+script når selve hjemmesiden er loaded- feks billeder, scripts, css filer osv...
+
 2. Parse int
 https://www.freecodecamp.org/news/parseint-in-javascript-js-string-to-int-example/
 Retunere en tal string til en rigtig Int som kan udregnes med.
@@ -163,4 +150,6 @@ Retunere en tal string til en rigtig Int som kan udregnes med.
 IsNan er en function som prøver at konvetere den sidste parameter i dette
 tilfælde " " brugerens output, den prøver så at konvetere det til et tal, hvis det er et tal
 så er vores return True, og hvis ikke et tal så er den false.
+
+Inspiration til selve calculatoren : https://www.geeksforgeeks.org/design-a-bmi-calculator-using-javascript/
  */
